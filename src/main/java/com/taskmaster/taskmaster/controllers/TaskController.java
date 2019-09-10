@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @CrossOrigin
@@ -31,14 +30,17 @@ public class TaskController {
         taskRepository.save(t);
     }
 
-    @GetMapping("/tasks/{id}/status")
-    public String getTaskIdStatus(@PathVariable String id) {
-        Task temp = taskRepository.findById(id).get();
-        if(temp != null) {
-            return temp.getStatus();
+    @PutMapping("/tasks/{id}/status")
+    public Task updateTaskStatus(@PathVariable String id) {
+        Task t = taskRepository.findById(id).get();
+        if (t.getStatus().equals("Available")) {
+            t.setStatus("Assigned");
+        } else if (t.getStatus().equals("Assigned")) {
+            t.setStatus("Accepted");
+        } else if (t.getStatus().equals("Accepted")) {
+            t.setStatus("Finished");
         }
-        else {
-            return "No task with given ID";
-        }
+        taskRepository.save(t);
+        return t;
     }
 }
