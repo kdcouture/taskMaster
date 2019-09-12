@@ -12,3 +12,4 @@
 
 ##### POST: http://newenv.iam9ckq2yg.us-west-2.elasticbeanstalk.com/api/v1/tasks
 "/api/v1/tasks" - This route will add a new task into the database so long as the requestbody is structured like the task object's JSON is.
+EX POST BODY: {"title":"title Value", "description":"description Value"}
