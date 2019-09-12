@@ -1,5 +1,8 @@
 # taskMaster
 ### URL: http://newenv.iam9ckq2yg.us-west-2.elasticbeanstalk.com
+
+Note: Must attach route to url.
+
 ---
 
 ## Routes
